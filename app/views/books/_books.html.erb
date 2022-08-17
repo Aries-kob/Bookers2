@@ -22,16 +22,3 @@
     <% end %>
   </tbody>
 </table>
-
-<h2>New Book</h2>
-<%= form_with model: @book do |f| %>
-
-  <div><label>Title</label></div>
-  <%= f.text_field :title %>
-  
-  <div><label>Opinion</label></div>
-  <%= f.text_area :body %>
-  
-  <div><%= f.submit 'Create Book' %></div>
-  
-<% end %>  
