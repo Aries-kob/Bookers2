@@ -6,8 +6,8 @@
   <strong>Body:</strong>
   <%= @book.body %>
 </p>  
-
-<%= link_to "Edit", edit_book_path(@book.id) %>
-<%= link_to "Destroy",book_path(@book.id),method: :delete %>
-
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book.id) %>
+  <%= link_to "Destroy",book_path(@book.id),method: :delete %>
+<% end %>
 <%= render 'users/user_info',user: @user %>

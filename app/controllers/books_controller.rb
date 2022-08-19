@@ -6,6 +6,8 @@ class BooksController < ApplicationController
   end
   
   def create
+    @books = Book.all
+    @user = current_user
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
@@ -18,11 +20,16 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
   end
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user == current_user
+      render "edit"
+    else
+      redirect_to books_path
+    end  
   end
   
   def update
@@ -48,3 +55,4 @@ end
   def book_params
     params.require(:book).permit(:title, :body)
   end 
+  
