@@ -1,3 +1,8 @@
+<main>
+        <p id="notice"></p>
+        <div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 <h1>User info</h1>
 
 <% if @user.errors.any? %>
@@ -13,8 +18,11 @@
   <div><label>Name</label></div>
   <%= f.text_field :name %>
   
+  <div><lavel>Image</lavel></div>
+  <%= f.file_field :profile_image, accept: "image/*" %>
+  
   <div><lavel>introduction</lavel></div>
   <%= f.text_field :introduction %>
   
-  <div><%= f.submit 'Update Book' %></div>
+  <div><%= f.submit 'Update User', class:"btn btn-secondary" %></div>
 <% end %>  
